@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder Survey</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <div class="jumbotron mt-3">
+                    <h3 class="text-center display-3"><i class="fas fa-poll-h"></i> Street Fighter</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9 mx-auto border-round pb-2 pt-2 survey">
+                <form>
+                    <span class="section-title">About you</span> <br />
+                    <div class="form-group">
+                        <label for="name" class="q-title">Whos Next?</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Enter your name" required>
+                        <small id="nameHelp" class="form-text text-muted">Required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo" class="q-title">Provide a photo (use .jpg or .gif)</label>
+                        <input type="text" class="form-control" id="photo" aria-describedby="photo" placeholder="photo URL" required>
+                        <small id="photoHelp" class="form-text text-muted">Required</small>
+                    </div>
+                    <span class="section-title">Personality Questions</span> <br />
+                    <div class="form-group">
+                        <span class="q-title">Question 1</span><br />
+                        <label for="q1">Ken is the Best</label>
+                        <select class="form-control" id="q1">
+                            <option value="1">1 (strongly agree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly disagree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <span class="q-title">Question 2</span><br />
+                        <label for="q2">The first Street Frighter is the best one</label>
+                        <select class="form-control" id="q2">
+                            <option value="1">1 (strongly agree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly disagree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <span class="q-title">Question 3</span><br />
+                        <label for="q3">Ryu is better than Ken</label>
+                        <select class="form-control" id="q3">
+                            <option value="1">1 (strongly agree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly disagree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <span class="q-title">Question 4</span><br />
+                        <label for="q4">Blanka is a close 3rd</label>
+                        <select class="form-control" id="q4">
+                            <option value="1">1 (strongly agree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly disagree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <span class="q-title">Question 5</span><br />
+                        <label for="q5">Better than Mortal Kombat</label>
+                        <select class="form-control" id="q5">
+                            <option value="1">1 (strongly agree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly disagree)</option>
+                        </select>
+                    </div>
+
+                  <button type="submit" class="btn btn-dark col-12 submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="row">
+            <div class="col-6 mx-left">
+                <span><a href="/api/friends">API Friends List</a> | <a href="https://github.com/miaa2551/friend-finder">Github Link</a></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for friend display -->
+    <div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Your the best!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="friendName"></div>
+              <img src="" alt="best friend photo" id="friendPhoto">
+            </div>
+            <div class="modal-footer">
+                <!-- <a href="/"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></a> -->
+                <a class="btn btn-large btn-dark" href="/">Lets Go!</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="./javascript/script.js"></script>
+</body>
+</html>

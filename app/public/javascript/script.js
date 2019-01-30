@@ -1,0 +1,70 @@
+
+
+$(".submit").on("click", function(event) {
+    event.preventDefault();
+    console.log("clicky2");
+
+    // Here we grab the form elements
+    var newFriend = {
+        name: $("#name").val().trim(),
+        photo: $("#photo").val().trim(),
+        scores:[ 
+        $("#q1").val().trim(),
+        $("#q2").val().trim(),
+        $("#q3").val().trim(),
+        $("#q4").val().trim(),
+        $("#q5").val().trim(),
+        $("#q6").val().trim(),
+        $("#q7").val().trim(),
+        $("#q8").val().trim(),
+        $("#q9").val().trim(),
+        $("#q10").val().trim()
+        ]
+};
+
+console.log(newFriend);
+
+// This line is the magic. It"s very similar to the standard ajax function we used.
+// Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+// The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+// depending on if a tables is available or not.
+
+$.post("/api/friends", newFriend,
+    function(data) {
+        // call function to calculate best friend
+        totalDifference(newFriend);
+    });
+});
+
+function totalDifference(newFriend) {
+    console.log("hi",newFriend);
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.ajax({ url: "/api/friends", method: "GET" })
+      .then(function(friendData) {
+
+        let scoresArr = [];
+        let sumDiff = 0;
+        console.log("returned friend data",friendData);
+
+        // Loop through and calculate coefficient
+        for (let i = 0; i < friendData.length-1; i++) {
+            for(let j = 0; j<friendData[i].scores.length; j++) {
+                sumDiff += Math.abs(newFriend.scores[j] -friendData[i].scores[j]);
+            }
+            scoresArr.push(sumDiff);
+            sumDiff=0;
+        }
+
+        console.log("summed scores ",scoresArr);
+        const bestFriend = scoresArr.indexOf(Math.min(...scoresArr));
+        console.log("bestie ",friendData[bestFriend]);
+        console.log("best name ",friendData[bestFriend].name);
+        console.log("best photo ", friendData[bestFriend].photo);
+
+        //let's pass info to the modal then show it
+        $("#friendModal #friendName").text("Your new best friend is: "+ friendData[bestFriend].name);
+        $("#friendModal #friendPhoto").attr('src',friendData[bestFriend].photo);
+        $('#friendModal').modal('show'); 
+
+      });
+}
