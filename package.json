@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miaa2551/friend-finder.git"
+    "url": "git+https://github.com/miaa2551/FriendFinder.git"
   },
   "author": "Miaa2551",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/miaa2551/friend-finder/issues"
+    "url": "https://github.com/miaa2551/FriendFinder/issues"
   },
-  "homepage": "https://github.com/miaa2551/friend-finder#readme",
+  "homepage": "https://github.com/miaa2551/FriendFinder#readme",
   "dependencies": {
     "express": "^4.16.4"
   }
